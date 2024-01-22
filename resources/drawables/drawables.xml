@@ -1,0 +1,12 @@
+<drawables>
+    <bitmap id="LauncherIcon" filename="launcher_icon.png" />
+    <bitmap id="Glider208" filename="glider.png" scaleX="146" scaleY="146"></bitmap>
+    <bitmap id="Glider218" filename="glider.png" scaleX="154" scaleY="154"></bitmap>
+    <bitmap id="Glider240" filename="glider.png" scaleX="170" scaleY="170"></bitmap>
+    <bitmap id="Glider260" filename="glider.png" scaleX="185" scaleY="185"></bitmap>
+    <bitmap id="Glider280" filename="glider.png" scaleX="200" scaleY="200"></bitmap>
+    <bitmap id="Glider360" filename="glider.png" scaleX="270" scaleY="270"></bitmap>
+    <bitmap id="Glider390" filename="glider.png" scaleX="292" scaleY="292"></bitmap>
+    <bitmap id="Glider416" filename="glider.png" scaleX="312" scaleY="312"></bitmap>
+    <bitmap id="Glider454" filename="glider.png" scaleX="340" scaleY="340"></bitmap>
+</drawables>
