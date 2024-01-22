@@ -14,7 +14,7 @@ class AnalogueGliderApp extends Application.AppBase {
     function onStop(state as Dictionary?) as Void {
     }
 
-    function getInitialView() as [Views] or [Views, InputDelegates] {
+    function getInitialView() {
         return [ new AnalogueGliderView() ];
     }
 
