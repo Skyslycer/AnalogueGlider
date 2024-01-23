@@ -7,20 +7,23 @@ using Toybox.Time.Gregorian;
 
 const gliderIds = {
     208 => Rez.Drawables.Glider208,
-    218 => Rez.Drawables.Glider218,        
+    218 => Rez.Drawables.Glider218,
     240 => Rez.Drawables.Glider240,
     260 => Rez.Drawables.Glider260,
     280 => Rez.Drawables.Glider280,
     360 => Rez.Drawables.Glider360,
     390 => Rez.Drawables.Glider390,
     416 => Rez.Drawables.Glider416,
-    454 => Rez.Drawables.Glider454
+    454 => Rez.Drawables.Glider454,
 };
 
 var width;
 var height;
 var screenCenterPoint;
 var img;
+var topField;
+var bottomField;
+var settingsChanged;
 
 class AnalogueGliderView extends WatchUi.WatchFace {
     function initialize() {
@@ -36,16 +39,24 @@ class AnalogueGliderView extends WatchUi.WatchFace {
 
     function onShow() as Void {
         img = Toybox.WatchUi.loadResource(gliderIds[height]);
+        loadSettings();
     }
 
     function onUpdate(dc as Dc) as Void {
+        if (settingsChanged) {
+            loadSettings();
+        }
         View.onUpdate(dc);
         dc.drawBitmap(width / 2 - img.getWidth() / 2, height / 2 - img.getHeight() / 2, img);
         drawHours(dc);
         drawHands(dc);
         drawCenterCircle(dc);
-        drawDateString(dc);
-        drawUtcTime(dc);
+        drawField(topField, dc, width / 2, height / 7);
+        var yMultiplier = 11;
+        if (height < 300) {
+            yMultiplier = 10.2;
+        }
+        drawField(bottomField, dc, width / 2, (height / 14) * yMultiplier);
     }
 
     function onHide() as Void {}
@@ -53,6 +64,45 @@ class AnalogueGliderView extends WatchUi.WatchFace {
     function onExitSleep() as Void {}
 
     function onEnterSleep() as Void {}
+
+    function loadSettings() {
+        topField = Application.Properties.getValue("TopField") as Number;
+        bottomField = Application.Properties.getValue("BottomField") as Number;
+        settingsChanged = false;
+    }
+
+    function drawField(fieldNum, dc, x, y) {
+        var str = "";
+        switch (fieldNum) {
+            case 0:
+                var info = Gregorian.info(Time.now(), Time.FORMAT_LONG);
+                str = Lang.format("$1$ $2$", [info.day, info.month]);
+                break;
+            case 1:
+                str = ActivityMonitor.getInfo().steps.format("%d");
+                break;
+            case 2:
+                var heartRate = Activity.getActivityInfo().currentHeartRate;
+                if (heartRate != null) {
+                    str = heartRate.format("%d");
+                } else {
+                    str = "--";
+                }
+                break;
+            case 3:
+                str = (System.getSystemStats().battery + 0.5).format("%d") + "%";
+                break;
+            case 4:
+                var utcTime = Gregorian.utcInfo(Time.now(), Time.FORMAT_LONG);
+                str = Lang.format("$1$:$2$", [utcTime.hour, utcTime.min]);
+                if (utcTime.min < 10) {
+                    str = Lang.format("$1$:0$2$", [utcTime.hour, utcTime.min]);
+                }
+                break;
+        }
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(x, y, Graphics.FONT_TINY, str, Graphics.TEXT_JUSTIFY_CENTER);
+    }
 
     function drawHours(dc) {
         var outerRad = width / 2;
@@ -117,26 +167,5 @@ class AnalogueGliderView extends WatchUi.WatchFace {
         }
 
         return result;
-    }
-
-    private function drawDateString(dc) {
-        var info = Gregorian.info(Time.now(), Time.FORMAT_LONG);
-        var dateStr = Lang.format("$1$ $2$", [info.day, info.month]);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(width / 2, height / 7, Graphics.FONT_TINY, dateStr, Graphics.TEXT_JUSTIFY_CENTER);
-    }
-
-    private function drawUtcTime(dc) {
-        var utcTime = Gregorian.utcInfo(Time.now(), Time.FORMAT_LONG);
-        var timeStr = Lang.format("$1$:$2$", [utcTime.hour, utcTime.min]);
-        if (utcTime.min < 10) {
-            timeStr = Lang.format("$1$:0$2$", [utcTime.hour, utcTime.min]);
-        }
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        var yMultiplier = 11;
-        if (height < 300) {
-            yMultiplier = 10.2;
-        }
-        dc.drawText(width / 2, (height / 14) * yMultiplier, Graphics.FONT_TINY, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
     }
 }

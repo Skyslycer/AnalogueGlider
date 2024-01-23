@@ -1,0 +1,4 @@
+<properties>
+    <property id="TopField" type="number">0</property>
+    <property id="BottomField" type="number">4</property>
+</properties>

@@ -1,0 +1,22 @@
+<settings>
+    <setting propertyKey="@Properties.TopField" title="@Strings.TopField">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.Date</listEntry>
+            <listEntry value="1">@Strings.Steps</listEntry>
+            <listEntry value="2">@Strings.HeartRate</listEntry>
+            <listEntry value="3">@Strings.Battery</listEntry>
+            <listEntry value="4">@Strings.UTC</listEntry>
+            <listEntry value="5">@Strings.Empty</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.BottomField" title="@Strings.BottomField">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.Date</listEntry>
+            <listEntry value="1">@Strings.Steps</listEntry>
+            <listEntry value="2">@Strings.HeartRate</listEntry>
+            <listEntry value="3">@Strings.Battery</listEntry>
+            <listEntry value="4">@Strings.UTC</listEntry>
+            <listEntry value="5">@Strings.Empty</listEntry>
+        </settingConfig>
+    </setting>
+</settings>

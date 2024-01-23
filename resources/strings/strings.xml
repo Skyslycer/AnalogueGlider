@@ -1,3 +1,11 @@
 <strings>
     <string id="AppName">AnalogueGlider</string>
+    <string id="Date">Date</string>
+    <string id="Steps">Steps</string>
+    <string id="HeartRate">Heart Rate</string>
+    <string id="Battery">Battery</string>
+    <string id="UTC">UTC</string>
+    <string id="Empty">Empty</string>
+    <string id="BottomField">Bottom Field</string>
+    <string id="TopField">Top Field</string>
 </strings>
