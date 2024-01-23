@@ -5,6 +5,18 @@ import Toybox.WatchUi;
 using Toybox.Time;
 using Toybox.Time.Gregorian;
 
+const gliderIds = {
+    208 => Rez.Drawables.Glider208,
+    218 => Rez.Drawables.Glider218,        
+    240 => Rez.Drawables.Glider240,
+    260 => Rez.Drawables.Glider260,
+    280 => Rez.Drawables.Glider280,
+    360 => Rez.Drawables.Glider360,
+    390 => Rez.Drawables.Glider390,
+    416 => Rez.Drawables.Glider416,
+    454 => Rez.Drawables.Glider454
+};
+
 var width;
 var height;
 var screenCenterPoint;
@@ -23,25 +35,7 @@ class AnalogueGliderView extends WatchUi.WatchFace {
     }
 
     function onShow() as Void {
-        if (height == 208) {
-            img = Toybox.WatchUi.loadResource(Rez.Drawables.Glider208);
-        } else if (height == 218) {
-            img = Toybox.WatchUi.loadResource(Rez.Drawables.Glider218);
-        } else if (height == 240) {
-            img = Toybox.WatchUi.loadResource(Rez.Drawables.Glider240);
-        } else if (height == 260) {
-            img = Toybox.WatchUi.loadResource(Rez.Drawables.Glider260);
-        } else if (height == 280) {
-            img = Toybox.WatchUi.loadResource(Rez.Drawables.Glider280);
-        } else if (height == 360) {
-            img = Toybox.WatchUi.loadResource(Rez.Drawables.Glider360);
-        } else if (height == 390) {
-            img = Toybox.WatchUi.loadResource(Rez.Drawables.Glider390);
-        } else if (height == 416) {
-            img = Toybox.WatchUi.loadResource(Rez.Drawables.Glider416);
-        } else if (height == 454) {
-            img = Toybox.WatchUi.loadResource(Rez.Drawables.Glider454);
-        }
+        img = Toybox.WatchUi.loadResource(gliderIds[height]);
     }
 
     function onUpdate(dc as Dc) as Void {
