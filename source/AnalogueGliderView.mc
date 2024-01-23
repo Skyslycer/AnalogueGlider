@@ -62,7 +62,7 @@ class AnalogueGliderView extends WatchUi.WatchFace {
 
     function drawHours(dc) {
         var outerRad = width / 2;
-        var innerRad = outerRad - 25;
+        var innerRad = outerRad - 20;
         var num = 0;
         for (var i = 0; i < 12; i++) {
             var angle = (Math.PI / 6) * i;
@@ -71,9 +71,13 @@ class AnalogueGliderView extends WatchUi.WatchFace {
             dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
             var offset = 25;
             if (height < 300) {
-                offset = 20;
+                offset = 15;
             }
-            dc.drawText(sX, sY - offset, Graphics.FONT_MEDIUM, num.toString(), Graphics.TEXT_JUSTIFY_CENTER);
+            var numStr = num.toString();
+            if (num == 0) {
+                numStr = "12";
+            }
+            dc.drawText(sX, sY - offset, Graphics.FONT_SMALL, numStr, Graphics.TEXT_JUSTIFY_CENTER);
             num++;
         }
     }
