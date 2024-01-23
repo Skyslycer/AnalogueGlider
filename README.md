@@ -1,8 +1,9 @@
 # AnalogueGlider
 
 This watch face is perfect for glider enthusiasts and pilots featuring a beautiful drawing of a glider in the sunset.
-It also shows the current local time using the analogue clock and UTC time in a HH:mm format under the image.
-The current date is shown above the glider.
+You can change what to display above and below the image in the watch face settings in Garmin Connect IQ.
+
+Possible things to display: Heart Rate, Battery Charge, Current Date, UTC Time
 
 The glider image has been gladly provided by PureGlide.
 
