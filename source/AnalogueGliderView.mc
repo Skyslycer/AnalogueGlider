@@ -94,10 +94,15 @@ class AnalogueGliderView extends WatchUi.WatchFace {
                 break;
             case 4:
                 var utcTime = Gregorian.utcInfo(Time.now(), Time.FORMAT_LONG);
-                str = Lang.format("$1$:$2$", [utcTime.hour, utcTime.min]);
-                if (utcTime.min < 10) {
-                    str = Lang.format("$1$:0$2$", [utcTime.hour, utcTime.min]);
-                }
+                var utcHour = utcTime.hour < 10 ? Lang.format("0$1$", [utcTime.hour]) : Lang.format("$1$", [utcTime.hour]);
+                var utcMin = utcTime.min < 10 ? Lang.format("0$1$", [utcTime.min]) : Lang.format("$1$", [utcTime.min]);
+                str = Lang.format("$1$:$2$", [utcHour, utcMin]);
+                break;
+            case 5:
+                var localTime = Gregorian.info(Time.now(), Time.FORMAT_LONG);
+                var localHour = localTime.hour < 10 ? Lang.format("0$1$", [localTime.hour]) : Lang.format("$1$", [localTime.hour]);
+                var localMin = localTime.min < 10 ? Lang.format("0$1$", [localTime.min]) : Lang.format("$1$", [localTime.min]);
+                str = Lang.format("$1$:$2$", [localHour, localMin]);
                 break;
         }
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);

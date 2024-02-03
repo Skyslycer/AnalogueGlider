@@ -6,7 +6,8 @@
             <listEntry value="2">@Strings.HeartRate</listEntry>
             <listEntry value="3">@Strings.Battery</listEntry>
             <listEntry value="4">@Strings.UTC</listEntry>
-            <listEntry value="5">@Strings.Empty</listEntry>
+            <listEntry value="5">@Strings.Time</listEntry>
+            <listEntry value="6">@Strings.Empty</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.BottomField" title="@Strings.BottomField">
@@ -16,7 +17,8 @@
             <listEntry value="2">@Strings.HeartRate</listEntry>
             <listEntry value="3">@Strings.Battery</listEntry>
             <listEntry value="4">@Strings.UTC</listEntry>
-            <listEntry value="5">@Strings.Empty</listEntry>
+            <listEntry value="5">@Strings.Time</listEntry>
+            <listEntry value="6">@Strings.Empty</listEntry>
         </settingConfig>
     </setting>
 </settings>

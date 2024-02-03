@@ -5,6 +5,7 @@
     <string id="HeartRate">Heart Rate</string>
     <string id="Battery">Battery</string>
     <string id="UTC">UTC</string>
+    <string id="Time">Time</string>
     <string id="Empty">Empty</string>
     <string id="BottomField">Bottom Field</string>
     <string id="TopField">Top Field</string>
